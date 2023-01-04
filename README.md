@@ -1,5 +1,6 @@
 # cse210-student-template
 This is the starter code for students in CSE 210.
+This is an extra line that I've added for the assignment where we practice using git.
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
