@@ -4,7 +4,7 @@ public class PromptGenerator{
 
     public string randomPrompt()
     {
-        Random promptRandom = new Random(); // This is stupid
+        Random promptRandom = new Random();
         int index = promptRandom.Next(_prompts.Count);
         return _prompts[index];
     }

@@ -62,13 +62,13 @@ class Program
                     
                     break;
                 case "4":
-                    Console.Write("Type the file name to save the journal to>");
+                    Console.Write("Type the file name to save the journal to (will be overwritten, load first if you want to append)>");
                     scribe.save(activeJournal, Console.ReadLine());
                     Console.Clear();
                     break;
                 case "5":
                     Console.Write("Type the name of the file to load prompts from>");
-                    string fileName = Console.ReadLine();
+                    string fileName = Console.ReadLine(); // There's some weirdness that happens when using this line in different cases of the same switch statement, which is why this implementation is different from the one in case 3.
                     if (System.IO.File.Exists(fileName))
                     {
                         promptGenerator = new PromptGenerator();
