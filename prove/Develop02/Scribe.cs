@@ -1,7 +1,10 @@
 public class Scribe
 {
+    private Validator validator = new Validator();
     public void save (Journal journal, string fileName)
     {
+        fileName = fileName + ".journal";
+
         using (StreamWriter writer = new System.IO.StreamWriter(fileName))
         {
             foreach (Entry entry in journal._entries)
@@ -13,10 +16,16 @@ public class Scribe
         }
     }
 
-    public Journal load (string fileName)
+    public Journal load (string fileName, Journal oldJournal)
     {
+        fileName = fileName + ".journal";
         string[] fileContent = System.IO.File.ReadAllLines(fileName);
-        
+
+        if (validator.checkJournalFile(fileContent) == false)
+        {
+            return oldJournal;
+        }
+
         Journal loadedJournal = new Journal();
         
         for (int lineCounter = 0; lineCounter != fileContent.Length; lineCounter += 3)

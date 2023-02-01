@@ -9,9 +9,10 @@ class Program
     {
         PromptGenerator promptGenerator = new PromptGenerator();
         
+        string defaultPromptsFile = "defaultprompts.txt";
         try
         {
-            promptGenerator.loadPrompts("defaultprompts.txt");
+            promptGenerator.loadPrompts(defaultPromptsFile);
         }
         catch
         {
@@ -19,6 +20,8 @@ class Program
             Environment.Exit(0);
         
         }
+
+        Validator validator = new Validator();
         Journal activeJournal = new Journal();
         Scribe scribe = new Scribe();
 
@@ -43,36 +46,71 @@ class Program
                     activeJournal.newEntry(promptGenerator);
                     Console.Clear();
                     break;
+                    
                 case "2":
                     Console.Clear();
                     activeJournal.displayEntries();
                     break;
+
+                // Cases 3, 4, and 5 need to be enclosed in blocks so that they can all use "string fileName" without conflicting. No such restriction exists for the other cases.
+
                 case "3":
-                    Console.Write("Type the name of the journal file to load>");
-                    try
-                    {
-                        activeJournal = scribe.load(Console.ReadLine());
-                        Console.Clear();
-                    }
-                    catch
+                {
+                    Console.Write("Type the name of the journal file to load (not including \".journal\")>");
+                    string fileName = Console.ReadLine();
+                    if (validator.checkLoadFileName($"{fileName}.journal") == false)
                     {
                         Console.Clear();
-                        Console.WriteLine("The file does not exist.");
+                        Console.WriteLine("File does not exist.");
+                        break;
                     }
-                    
-                    break;
+                    Journal temporaryJournal = scribe.load(fileName, activeJournal);
+                    if (activeJournal == temporaryJournal)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Not a valid journal file.");
+                        break;
+                    }
+                    else
+                    {
+                        activeJournal = temporaryJournal;
+                        Console.Clear();
+                        Console.WriteLine("Journal loaded!");
+                        break;
+                    }
+                }
+                
                 case "4":
+                {
                     Console.Write("Type the file name to save the journal to (will be overwritten, load first if you want to append)>");
-                    scribe.save(activeJournal, Console.ReadLine());
+                    string fileName = Console.ReadLine();
+                    if (validator.checkSaveFileName(fileName) == false)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("File name is invalid.");
+                        break;
+                    }
                     Console.Clear();
+                    Console.WriteLine("Journal saved!");
+                    scribe.save(activeJournal, fileName);
                     break;
+                }
+                
                 case "5":
-                    Console.Write("Type the name of the file to load prompts from>");
-                    string fileName = Console.ReadLine(); // There's some weirdness that happens when using this line in different cases of the same switch statement, which is why this implementation is different from the one in case 3.
+                {
+                    Console.Write("Type the name of the file to load prompts from (including extension, e.g. \"prompts.txt\")>");
+                    string fileName = Console.ReadLine();
                     if (System.IO.File.Exists(fileName))
                     {
                         promptGenerator = new PromptGenerator();
                         promptGenerator.loadPrompts(fileName);
+                        if (promptGenerator._prompts.Count <= 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("File is empty!");
+                            promptGenerator.loadPrompts(defaultPromptsFile);
+                            break;
+                        }
                         Console.Clear();
                         break;
                     }
@@ -82,7 +120,8 @@ class Program
                         Console.WriteLine("The file does not exist.");
                         break;
                     }
-
+                }
+                
                 case "6":
                     Environment.Exit(0);
                     break;
