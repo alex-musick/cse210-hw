@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning04 World!");
+        WritingAssignment test = new WritingAssignment("The life of Kermit", "Jim Henson", "Puppetry");
+        Console.WriteLine(test.GetSummary());
+        Console.WriteLine(test.GetWritingInformation());
     }
 }
