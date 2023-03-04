@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
+
+        //I showed creativity by creating a unique animation for the breathing activity where a bar grows and shrinks to indicate how much air you should have.
+        //It slows down when reading the end, both when growing and when shrinking.
+
         BreathingActivity breathingActivity = new BreathingActivity();
         
         ListingActivity listingActivity = new ListingActivity();
