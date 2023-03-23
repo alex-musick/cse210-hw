@@ -1,0 +1,6 @@
+type:simple|name:simple goal test|description:test simple goals|points:5|earned:0|complete:False
+type:eternal|name:eternal goal test|description:test eternal goals|points:5|earned:5|complete:false
+type:checklist|name:checklist goal test|description:test checklist goals|points:15|earned:5|complete:False|instancepoints:5|timesrequired:6
+type:simple|name:simple goal test|description:test simple goals|points:5|earned:5|complete:True
+type:eternal|name:eternal goal test|description:test eternal goals|points:5|earned:5|complete:false
+type:checklist|name:checklist goal test|description:test checklist goals|points:15|earned:10|complete:False|instancepoints:5|timesrequired:6

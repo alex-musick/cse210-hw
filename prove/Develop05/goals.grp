@@ -1,0 +1,3 @@
+type:checklist|name:ChecklistGoal Testing|description:Test out checklist goal functionality|points:50|earned:0|complete:False|instancepoints:10|timesrequired:5|
+type:simple|name:SimpleGoal Testing|description:Test out simple goal functionality|points:10|earned:0|complete:False
+type:eternal|name:EternalGoal Testing|description:Test out eternal goal functinality|points:10|earned:0|complete:false
