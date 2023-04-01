@@ -4,6 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        Catalogue testCat = new Catalogue();
+        new LoadNewCourseCommand(testCat).Execute();
+
+        testCat.RankAllAssignments();
+
+        foreach (Assignment assignment in testCat.GetAllAssignments())
+        {
+            Console.WriteLine($"{assignment.GetName()}, {assignment.GetRank()}");
+        }
+
+        new ViewAssignmentsCommand(testCat).Execute();
     }
 }

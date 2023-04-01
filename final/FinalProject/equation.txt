@@ -1,0 +1,17 @@
+Where:
+M = Modifier (which varies by the type of assignment and/or by user preference)
+C = Credits (of the course)
+P = Points (rounded to nearest integer)
+D = Days until due date
+
+Rank = (MP)/D + 2C
+
+The following possible adjustments are then considered:
+
+-If Rank is negative, then it is underflowed to be a large positive number, such that the final rank = 9,007,199,254,740,992 (IEEE 754 DBL_MAX) + Rank.
+This makes it so that overdue assignments are always considered to be more important than anything else, and are still ranked fairly amongst themselves.
+
+-If D >= 30, the final rank is reduced by 3 (so as to avoid over-prioritizing assignments that are not yet relevant.)
+-If D >= 14 and D < 30, the final rank is reduced by 1 for the same reason as above.
+
+Ties will be handled automatically by due date as a result of earlier assignments being listed earlier in the file than later assignments.

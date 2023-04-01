@@ -1,0 +1,5 @@
+This program comes with NO WARRANTY of ANY KIND. No guarantee is made that the program will not cause damage, that it will not omit important information, that it will function properly, that it will provide useful results, or that it will otherwise fulfill any expectation of the user. The user agrees to accept full responsibility for any damages that may be caused, directly or indirectly, through the use of this program. The user also agrees not to hold the author responsible in any way for any outcomes that may arise through the use of this program.
+
+Canvas is a product of Instructure, Inc. Use of exported course content packages is subject to any relevant policies set out by Instructure/Canvas and/or their educational institution. It is the user's sole responsibility to be aware of and comply with any relevant policies.
+
+This software is an original work and does not contain any material belonging to Instructure/Canvas or any affiliated institutions.
