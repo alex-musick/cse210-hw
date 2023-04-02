@@ -68,14 +68,25 @@ public class CourseParser
             // Convert the date string to an actual datetime object
 
             string dueDateString = FindKeyData(assignmentAttributes, "dueAt");
-            if (dueDateString == "")
+            if (dueDateString == "" | dueDateString == null)
             {
                 continue;
             }
-            int dueYear = int.Parse(dueDateString.Split("-")[0]);
-            int dueMonth = int.Parse(dueDateString.Split("-")[1]);
-            int dueDay = int.Parse(dueDateString.Split("-")[2].Substring(0, 2));
-            DateTime dueDate = new DateTime(dueYear, dueMonth, dueDay);
+
+            // Work around bug where a malformed due date string can crash the parser (for some reason null strings are not always caught above)
+            DateTime dueDate;
+
+            try
+            {
+                int dueYear = int.Parse(dueDateString.Split("-")[0]);
+                int dueMonth = int.Parse(dueDateString.Split("-")[1]);
+                int dueDay = int.Parse(dueDateString.Split("-")[2].Substring(0, 2));
+                dueDate = new DateTime(dueYear, dueMonth, dueDay);
+            }
+            catch
+            {
+                continue;
+            }
 
             double points = 0;
             try
