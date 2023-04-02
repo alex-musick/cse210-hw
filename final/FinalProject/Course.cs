@@ -1,3 +1,4 @@
+[Serializable]
 public class Course
 {
     private int _credits = 0;

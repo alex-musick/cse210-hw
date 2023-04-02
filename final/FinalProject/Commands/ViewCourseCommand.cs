@@ -8,7 +8,7 @@ public class ViewCourseCommand : Command
 
     public override void Execute()
     {
-        Course course = ChooseCourse();
+        Course course = new CourseChooser().ChooseCourse(_catalogue);
         if (course.GetName() == "dummy" & course.GetCredits() == 0)
         {
             Console.WriteLine("That's not a valid course number.");
@@ -20,20 +20,4 @@ public class ViewCourseCommand : Command
         return;
     }
 
-    private Course ChooseCourse()
-    {
-        new ViewAllCoursesCommand(_catalogue).Execute();
-        Console.WriteLine();
-        Console.Write("Please choose the course number you want to view: ");
-        string courseNumberInput = Console.ReadLine();
-
-        try
-        {
-            return _catalogue.GetAllCourses()[int.Parse(courseNumberInput)];
-        }
-        catch
-        {
-            return new Course("dummy", 0);
-        }
-    }
 }

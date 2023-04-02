@@ -1,3 +1,4 @@
+[Serializable]
 public class TextAssignment : Assignment
 {
     public TextAssignment(string name, double points, int credits, DateTime dueDate) : base(name, points, credits, dueDate)

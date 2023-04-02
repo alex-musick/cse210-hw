@@ -1,3 +1,4 @@
+[Serializable]
 public class Catalogue
 {
     private List<Course> _courses = new List<Course>();

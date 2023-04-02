@@ -6,7 +6,7 @@ public class CourseParser
 
     private string FindKeyData(string[] assignmentAttributes, string key)
     {
-        Regex regex = new Regex(":(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"); //This hideous mess will split on colons, but ignore colons inside quotes
+        Regex regex = new Regex(":(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"); //Split on colons, but ignore colons inside of quotes
         key = $"\"{key}\"";
         for (int i = 0; i < assignmentAttributes.Count(); i++)
         {
@@ -19,7 +19,7 @@ public class CourseParser
         return "";
     }
 
-    public List<Assignment> ParseFile(string fileName, int credits) //This is a long method. I think that's justified because none of this code will run on its own in other contexts, and splitting it into smaller methods would serve no practical purpose besides reducing readability for the sake of having more small private methods.
+    public List<Assignment> ParseFile(string fileName, int credits) //This is a very long method. I think that's justified because none of this code will run on its own in other contexts, and splitting it into smaller methods would serve no practical purpose besides reducing readability for the sake of having more small private methods.
     {
         List<Assignment> finalList = new List<Assignment>();
 

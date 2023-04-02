@@ -10,17 +10,24 @@ public class RemoveCourseCommand : Command
     {
         new ViewAllCoursesCommand(_catalogue).Execute();
         Console.WriteLine();
-        Console.Write("Please type the course number to remove now.");
+        Console.Write("Please type the course number to remove: ");
         string courseNumberInput = Console.ReadLine();
         Course course = new Course("dummy", 0);
 
         try
         {
-            course = _catalogue.GetAllCourses()[int.Parse(courseNumberInput)];
+            course = _catalogue.GetAllCourses()[int.Parse(courseNumberInput) - 1];
         }
         catch
         {
             Console.WriteLine("That's not a valid course number.");
+            return;
+        }
+
+        if (course.GetName() == "dummy" & course.GetCredits() == 0)
+        {
+            Console.WriteLine("That's not a valid course number.");
+            return;
         }
 
         Console.WriteLine($"Deleting course: {course.GetName()}");

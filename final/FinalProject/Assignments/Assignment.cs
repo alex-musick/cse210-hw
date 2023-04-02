@@ -1,3 +1,4 @@
+[Serializable]
 public class Assignment
 {
     protected string _type = "base";
@@ -21,7 +22,7 @@ public class Assignment
     {
         TimeSpan daysUntilDueSpan = _dueDate - DateTime.Today;
         double daysUntilDue = daysUntilDueSpan.TotalDays;
-        _rank = ( (_points * _pointsModifier) / daysUntilDue ) + 2*_credits; //See equation.txt for how ranking works
+        _rank = ( (_points * _pointsModifier) / daysUntilDue ) *_credits; //See equation.txt for how ranking works
 
         if (_rank < 0)
         {

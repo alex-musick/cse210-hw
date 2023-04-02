@@ -20,7 +20,5 @@ public class HelpCommand : Command
         Console.WriteLine();
         Console.WriteLine("You do not need to keep the course-data.js file after importing it.");
         Console.WriteLine();
-        Console.WriteLine("Press enter to return to the menu.");
-        Console.ReadLine();
     }
 }

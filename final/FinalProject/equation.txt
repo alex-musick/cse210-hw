@@ -4,7 +4,7 @@ C = Credits (of the course)
 P = Points (rounded to nearest integer)
 D = Days until due date
 
-Rank = (MP)/D + 2C
+Rank = (MP)/D * C
 
 The following possible adjustments are then considered:
 
