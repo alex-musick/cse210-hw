@@ -9,7 +9,6 @@ public class LoadCatalogueCommand
     public Catalogue Execute()
     {
         string[] lines = File.ReadAllLines("user_data.cat");
-        bool isCourseString = false;
         Course course = new Course("dummy", 0);
         for (int i = 0; i < lines.Count(); i++)
         {
@@ -58,7 +57,7 @@ public class LoadCatalogueCommand
                     default:
                     {
                         throw new Exception("Tried to load assignment with invalid type.");
-                        break;
+                        // break;
                     }
                 }
                 course.AddAssignment(assignment);
@@ -78,6 +77,16 @@ public class LoadCatalogueCommand
 
         return _catalogue;
 
+    }
+
+    private void CleanCatalogue() //Remove duplicates introduced while loading
+    {
+        Catalogue cleanCatalogue = new Catalogue();
+        foreach (Course course in _catalogue.GetAllCourses())
+        {
+            cleanCatalogue.AddCourse(course);
+        }
+        _catalogue = cleanCatalogue;
     }
 
 }
