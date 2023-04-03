@@ -18,6 +18,11 @@ public class Assignment
         _dueDate = dueDate;
     }
 
+    public override string ToString()
+    {
+        return $"-{_name}|{_points}|{_credits}|{_dueDate}|{_type}";
+    }
+
     public void Rank()
     {
         TimeSpan daysUntilDueSpan = _dueDate - DateTime.Today;

@@ -8,7 +8,13 @@ public class SaveCatalogueCommand : Command
     }
     public override void Execute()
     {
-        BinarySerialization.WriteToBinaryFile<Catalogue>("user_data.bin", _catalogue);
+        using (StreamWriter file = new StreamWriter("user_data.cat"))
+        {
+            foreach (string line in _catalogue.ToStrings())
+            {
+                file.WriteLine(line);
+            }
+        }
     }
 
 }

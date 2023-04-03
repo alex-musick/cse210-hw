@@ -9,7 +9,7 @@ class Program
 
         try
         {
-            catalogue = BinarySerialization.ReadFromBinaryFile<Catalogue>("user_data.bin");
+            catalogue = new LoadCatalogueCommand(catalogue).Execute();
         }
         catch
         {

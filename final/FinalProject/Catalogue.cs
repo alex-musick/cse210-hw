@@ -46,4 +46,14 @@ public class Catalogue
             course.RankAssignments();
         }
     }
+
+    public List<string> ToStrings()
+    {
+        List<string> returnedStrings = new List<string>();
+        foreach (Course course in _courses)
+        {
+            returnedStrings.AddRange(course.ToStrings());
+        }
+        return returnedStrings;
+    }
 }

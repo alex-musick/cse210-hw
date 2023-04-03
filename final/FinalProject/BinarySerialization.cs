@@ -1,6 +1,5 @@
 // COURTESY OF https://blog.danskingdom.com/saving-and-loading-a-c-objects-data-to-an-xml-json-or-binary-file/
-// binaryFormatter Serialization is depricated. This is being used only as a stop-gap solution to allow for delivering on time and is not production ready.
-
+// THIS IS NOT USED. This was used as a stop-gap solution for testing purposes only, and is kept here only so it can be re-used for maintenance if needed.
 
 
 /// <summary>

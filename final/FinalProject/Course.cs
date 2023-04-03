@@ -12,6 +12,17 @@ public class Course
         _credits = credits;
     }
 
+    public List<string> ToStrings()
+    {
+        List<string> returnedStrings = new List<string>();
+        returnedStrings.Add($"+{_name}|{_credits}");
+        foreach (Assignment assignment in _assignments)
+        {
+            returnedStrings.Add(assignment.ToString());
+        }
+        return returnedStrings;
+    }
+
     public void AddAssignment(Assignment assignment)
     {
         if (!_assignments.Contains(assignment))
